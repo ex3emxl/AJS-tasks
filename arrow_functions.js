@@ -30,9 +30,12 @@ function getDay() {
   return days[new Date().getDay()];
 }
 
-getDay = (days = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб']) => days[new Date().getDay()];
+getDay = () => {
+  const days = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'];
+  return days[new Date().getDay()];
+};
 
 
 function getListCopy(list) { return list.slice(); }
 
-getListCopy = (list) => list.slice();
+getListCopy = (...list) => list.slice();
