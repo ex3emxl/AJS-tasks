@@ -1,4 +1,4 @@
-var fs = require('file-system');
+const fs = require('file-system');
 const currentDate = require('./date');
 const dir_name = 'date_dir';
 const file_name = 'current_date';
