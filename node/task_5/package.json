@@ -1,0 +1,12 @@
+{
+  "name": "weather",
+  "version": "1.0.0",
+  "description": "Wether\u001b[D\u001b[D\u001b[D\u001b[Dather\u001b[2~",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node main.js"
+  },
+  "author": "SeMi",
+  "license": "ISC"
+}
