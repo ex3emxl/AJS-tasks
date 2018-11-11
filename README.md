@@ -1,1 +1,1 @@
-# test
+# Advanced JavaScript Course
