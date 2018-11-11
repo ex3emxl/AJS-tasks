@@ -3,19 +3,21 @@ const fs = require('fs');
 
 const server = http.createServer((req, res) => {
     const isHTML = req.url.includes('.html');
-    const fileName = req.url.replace('/','');
-    
+    const fileName = req.url.replace('/', '');
+
     if (isHTML) {
         fs.readFile(fileName, (err, data) => {
-           res.setHeader('Content-Type','text/html');
-           if (err) res.end('<strong>Error html!</strong>');
-        res.end(String(data));
+            res.setHeader('Content-Type', 'text/html');
+            if (err)
+                res.end('<strong>Error HTML!</strong>');
+            res.end(String(data));
         });
         return;
     }
 
     fs.readFile(fileName, (err, data) => {
-        if (err) res.end('<strong>Error not html!</strong>');
+        if (err)
+            res.end('<strong>Error not HTML!</strong>');
         res.end(data);
     });
 });
