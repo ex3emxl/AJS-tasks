@@ -25,15 +25,11 @@ http.get('http://wttr.in/~kharkov', (res) => {
         rawData += chunk;
     });
     res.on('end', () => {
-        try {
             fs.writeFile('weather.html', rawData, (err) => {
                 if (err)
                     return console.log(err);
                 console.log('File weather.html created!');
             });
-        } catch (e) {
-            console.error(e.message);
-        }
     });
 }).on('error', (e) => {
     console.error(`Got error: ${e.message}`);
