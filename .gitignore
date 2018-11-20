@@ -25,8 +25,10 @@ build/Release
 
 # Dependency directories
 node/node_modules/
+node_modules/
 node/task_4/node_modules/
 jspm_packages/
+public/
 
 # Optional npm cache directory
 .npm
