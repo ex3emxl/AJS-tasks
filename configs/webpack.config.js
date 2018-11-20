@@ -2,10 +2,10 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const package = require('../package');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-//const argv = process.argv;
+const argv = process.argv;
 
 
-//const isFileCss = argv.includes('--styles');
+const isFileCss = argv.includes('--styles');
 const timestamp = Date.now();
 
 const plugins = [
@@ -14,12 +14,12 @@ const plugins = [
             title: package.name,
             version: package.version
         }),
-        new MiniCssExtractPlugin({filename:'style-' + timestamp + '.css'})
+        new MiniCssExtractPlugin({filename:'style.css'})
 ];
 
-//if(isFileCss){
-//    plugins.push(new MiniCssExtractPlugin({filename:'style.css'}));
-//}
+if(isFileCss){
+    plugins.push(new MiniCssExtractPlugin({filename:'style.css'}));
+}
 
 
 module.exports = {
@@ -62,5 +62,11 @@ module.exports = {
         splitChunks: {
             chunks: 'all'
         }
+    },
+    devServer: {
+        contentBase: path.resolve(__dirname, '../public'),
+        publicPath: '/',
+        port: 5500,
+        hot: true
     }
 };

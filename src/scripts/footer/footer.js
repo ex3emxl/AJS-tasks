@@ -1,7 +1,8 @@
 require('./footer.css');
-const builder = require('../elementBuilder');
+import builder from '../elementBuilder';
+//const builder = require('../elementBuilder');
 const content = '<p>Easycode 2017 (c)</p>';
 
-module.exports = builder(
+export default builder(
 'footer', content, 'footer'
 );
