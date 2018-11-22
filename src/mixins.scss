@@ -1,0 +1,18 @@
+@mixin round($angle: 10px) {
+    border-radius: $angle;
+}
+
+@mixin triangle($direction: 'up'){
+    @if $direction == 'up' { $direction: 'bottom';  }
+    @if $direction == 'down' { $direction: 'top';  }
+    @if $direction == 'left' { $direction: 'right';  }
+    @elseif $direction == 'right' { $direction: 'left';  }
+
+    &:after {
+        content: ''; 
+        position: absolute;
+        left: 20px; bottom: -20px;
+        border: 10px solid transparent;
+        #{'border-' + $direction}: 10px solid green;
+    }
+}
