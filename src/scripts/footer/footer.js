@@ -1,4 +1,4 @@
-require('./footer.css');
+require('./footer.scss');
 import builder from '../elementBuilder';
 //const builder = require('../elementBuilder');
 const content = '<p>Easycode 2017 (c)</p>';
