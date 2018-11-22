@@ -1,0 +1,18 @@
+@import "mixins.scss";
+
+$main-bg: #eee;
+$main-fsize: 14px;
+
+body {
+    background: $main-bg;
+    font: $main-fsize Arial, Helvetica, sans-serif;
+    h2{
+        border: 2px solid red;
+        padding: 4px;
+        @include round(5px);     
+    }
+    .block{        
+        position: relative;
+        @include triangle();
+    }
+}
