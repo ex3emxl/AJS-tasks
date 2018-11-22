@@ -9,10 +9,10 @@ body {
     h2{
         border: 2px solid red;
         padding: 4px;
-        /*@include round(5px);*/     
+        @include round(5px);     
     }
     .block{        
         position: relative;
-        /*@include triangle();*/
+        @include triangle();
     }
 }
