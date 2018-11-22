@@ -5,7 +5,7 @@ import footer from './scripts/footer';
 //const main = require('./scripts/main/main');
 //const footer = require('./scripts/footer/footer');
 
-require('./app.css');
+require('./app.scss');
 
 document
         .body.appendChild(header);
