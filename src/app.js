@@ -2,12 +2,16 @@ import React from 'react';
 import ReactDom from 'react-dom';
 
 import Header from './components/header';
-// import Footer from './components/footer';
+import Main from './components/main';
+import Footer from './components/footer';
+
+import './components/general.scss';
 
 const Wrapper = (
     <>
         <Header />
-        {/*<Footer />*/}
+        <Main />
+        <Footer />
     </>
 );
 
