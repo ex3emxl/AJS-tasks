@@ -5,6 +5,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const argv = process.argv;
 
 
+const isFileCss = argv.includes('--styles');
+const timestamp = Date.now();
+
 const plugins = [
     new HtmlWebpackPlugin({
             template: './index.html',
@@ -13,6 +16,10 @@ const plugins = [
         }),
         new MiniCssExtractPlugin({filename:'style.css'})
 ];
+
+if(isFileCss){
+    plugins.push(new MiniCssExtractPlugin({filename:'style.css'}));
+}
 
 
 module.exports = {
@@ -33,18 +40,21 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['@babel/preset-env']
+                        presets: ['@babel/preset-env', '@babel/preset-react']
                     }
                 }
             },
-
             {
-                test: /\.s?css$/,
-                use: [MiniCssExtractPlugin.loader,
-                    {loader: "css-loader"},
-                     {loader: "sass-loader"}
-                ]
+                test: /\.css$/,
+                use: [MiniCssExtractPlugin.loader, 'css-loader']
             }
+//            {
+//                test: /\.s?css$/,
+//                use: [isFileCss ? MiniCssExtractPlugin.loader : 'style-loader',
+//                    {loader: "css-loader"},
+//                     {loader: "sass-loader"}
+//                ]
+//            }
         ]
     },
     plugins,
@@ -52,5 +62,11 @@ module.exports = {
         splitChunks: {
             chunks: 'all'
         }
+    },
+    devServer: {
+        contentBase: path.resolve(__dirname, '../public'),
+        publicPath: '/',
+        port: 5500,
+        hot: true
     }
 };

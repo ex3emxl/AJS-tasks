@@ -1,15 +1,16 @@
-//const header = require('./scripts//header/header');
-import header from './scripts/header';
-import main from './scripts/main';
-import footer from './scripts/footer';
-//const main = require('./scripts/main/main');
-//const footer = require('./scripts/footer/footer');
+import React from 'react';
+import ReactDom from 'react-dom';
 
-require('./app.scss');
+import Header from './components/header';
+// import Footer from './components/footer';
 
-document
-        .body.appendChild(header);
-document
-        .body.appendChild(main);
-document
-        .body.appendChild(footer);
+const Wrapper = (
+    <>
+        <Header />
+        {/*<Footer />*/}
+    </>
+);
+
+
+
+    ReactDom.render(Wrapper, document.getElementById('app'));
