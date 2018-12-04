@@ -4,9 +4,11 @@ import Content from '../content';
 
 import './main.scss';
 
+
 const Main = () => (
     <main className='main'>
         <Sidebar />
+
         <Content />
     </main>
 );

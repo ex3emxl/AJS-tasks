@@ -2,11 +2,11 @@ import React from 'react';
 
 import './navigation.scss';
 
-const Navigation = () => (
+const Navigation = (props) => (
     <ul className='nav'>
-        <li><a href="#">Item 1</a></li>
-        <li><a href="#">Item 2</a></li>
-        <li><a href="#">Item 3</a></li>
+        {
+            props.list.map((el, index) => <li key={index}><a href={'/' + el.toLowerCase()}>{el}</a></li>)
+        }
     </ul>
 );
 
