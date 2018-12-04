@@ -44,17 +44,17 @@ module.exports = {
                     }
                 }
             },
-            {
-                test: /\.css$/,
-                use: [MiniCssExtractPlugin.loader, 'css-loader']
-            }
-//            {
-//                test: /\.s?css$/,
-//                use: [isFileCss ? MiniCssExtractPlugin.loader : 'style-loader',
-//                    {loader: "css-loader"},
-//                     {loader: "sass-loader"}
-//                ]
-//            }
+            // {
+            //     test: /\.css$/,
+            //     use: [MiniCssExtractPlugin.loader, 'css-loader']
+            // }
+           {
+               test: /\.s?css$/,
+               use: [isFileCss ? MiniCssExtractPlugin.loader : 'style-loader',
+                   {loader: "css-loader"},
+                    {loader: "sass-loader"}
+               ]
+           }
         ]
     },
     plugins,

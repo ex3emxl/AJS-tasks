@@ -1,0 +1,12 @@
+@import '../variables';
+
+header {
+  background: $main-bg;
+  min-height: 20vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: flex-start;
+}
