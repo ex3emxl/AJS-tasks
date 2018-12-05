@@ -5,22 +5,14 @@ import Numbers from '../numbers';
 
 import './content.scss';
 
-
-const Error = (props) =>
-    <mark style={{color: props.color}}>{props.text}</mark>;
-
 const Content = () => (
     <div className='content'>
         <Hello
             name="Se Mi"
         />
 
-        <Numbers from="5" to="7" even />
+        <Numbers from="5" to="13" odd />
 
-        <Error
-            text="There is an error"
-            color="red"
-        />
     </div>
 );
 
