@@ -11,7 +11,11 @@ const Content = () => (
             name="Se Mi"
         />
 
-        <Numbers from="5" to="13" odd />
+        <Numbers from={5} to={13} odd />
+
+        <Numbers from={5} to={13} even />
+
+        <Numbers from={5} to={13} />
 
     </div>
 );

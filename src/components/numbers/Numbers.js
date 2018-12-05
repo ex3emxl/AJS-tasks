@@ -6,19 +6,21 @@ const Numbers = (props) =>{
     const nums = Array(end-start+1)
         .fill()
         .map(() => start++);
+    const li = arr => arr.map((num, index) => <li key={index}>{num}</li>);
+
 
     if (props.odd){
         return <ul>
-            {nums.filter(num => num % 2 ).map((num, index) => <li key={index}>{num}</li>)}
+            {li(nums.filter(num => num % 2 ))}
         </ul>
     }
     if (props.even){
         return <ul>
-            {nums.filter(num => num % 2 === 0).map((num, index) => <li key={index}>{num}</li>)}
+            {li(nums.filter(num => num % 2 === 0))}
         </ul>
     }else {
         return <ul>
-            {nums.map(num => <li>{num}</li>)}
+            {li(nums)}
         </ul>
     }
 };

@@ -2,19 +2,18 @@ import React from 'react';
 
 const time = new Date().getHours();
 let text = "Good night";
-if (time > 3) {
-    if (time < 12) {
-        text = "Good morning";
-    } else {
-        if (time < 18) {
-            text = "Good afternoon";
-        } else {
-            if (time < 22) {
-                text = "Good evening";
-            }
-        }
-    }
-}
+
+if (time < 22)
+    text = "Good evening";
+
+if (time < 18)
+    text = "Good afternoon";
+
+if (time < 12)
+    text = "Good morning";
+
+if (time < 3 )
+    text = "Good night";
 
 const Hello = (props) =>{
     return props.name
