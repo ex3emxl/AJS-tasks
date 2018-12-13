@@ -1,22 +1,30 @@
 import React from 'react';
 
 import Hello from '../hello';
+import Counter from '../counter';
 import Numbers from '../numbers';
 
 import './content.scss';
+
+
+const Error = (props) =>
+    <mark style={{color: props.color}}>{props.text}</mark>;
 
 const Content = () => (
     <div className='content'>
         <Hello
             name="Se Mi"
         />
+        <br />
 
-        <Numbers from={5} to={13} odd />
+        <Counter />
+        <br />
+        {/*<Numbers from="5" to="7" even />*/}
 
-        <Numbers from={5} to={13} even />
-
-        <Numbers from={5} to={13} />
-
+        <Error
+            text="There is an error"
+            color="red"
+        />
     </div>
 );
 

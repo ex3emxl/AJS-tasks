@@ -10,7 +10,7 @@ import './components/general.scss';
 const Wrapper = (
     <>
         <Header />
-        <Main />
+        <Main title="Title" />
         <Footer />
     </>
 );

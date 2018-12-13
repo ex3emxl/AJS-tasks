@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const package = require('../package');
+const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const argv = process.argv;
 
@@ -14,7 +15,11 @@ const plugins = [
             title: package.name,
             version: package.version
         }),
-        new MiniCssExtractPlugin({filename:'style.css'})
+        new MiniCssExtractPlugin({filename:'style.css'}),
+        new webpack.ProvidePlugin({
+            React: 'react',
+            Component: ['react', 'Component']
+        })
 ];
 
 if(isFileCss){
@@ -40,7 +45,8 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['@babel/preset-env', '@babel/preset-react']
+                        presets: ['@babel/preset-env', '@babel/preset-react'],
+                        plugins: ['@babel/plugin-proposal-class-properties'],
                     }
                 }
             },
@@ -68,5 +74,6 @@ module.exports = {
         publicPath: '/',
         port: 5500,
         hot: true
-    }
+    },
+    devtool: "inline-source-map"
 };
