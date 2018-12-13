@@ -3,6 +3,7 @@ import React from 'react';
 import Hello from '../hello';
 import Counter from '../counter';
 import Numbers from '../numbers';
+import Button from '../button';
 
 import './content.scss';
 
@@ -19,12 +20,14 @@ const Content = () => (
 
         <Counter />
         <br />
-        {/*<Numbers from="5" to="7" even />*/}
+        <Numbers from="1" to="7" even />
 
         <Error
             text="There is an error"
             color="red"
         />
+            <br />
+            <Button />
     </div>
 );
 
