@@ -1,6 +1,7 @@
 import React from 'react';
 import Sidebar from '../sidebar';
 import Content from '../content';
+import List from '../list';
 
 import './main.scss';
 
@@ -9,13 +10,16 @@ class Main extends Component{
 
     constructor(props){
         super(props);
+    }
+
+    componentDidMount(){
         fetch('https://jsonplaceholder.typicode.com/users')
             .then(response => response.json())
             .then(users => this.setState({users}))
     }
 
-    showUserName(username) {
-        console.log( username);
+    showUserInfo(user) {
+        alert( user.username);
     }
 
     render() {
@@ -25,22 +29,11 @@ class Main extends Component{
         return ( <main className='main'>
             <h1>{title}</h1>
             <Sidebar />
-            <ul>
-            {users.map(({name, id, username}) => <li key={id} onClick={() => this.showUserName(username)}>{name}</li>)}
-            </ul>
-            <Content />
+            <List items={users} handleClick={this.showUserInfo} />
+                        <Content />
         </main>);
     }
 }
 
-
-
-// const Main = () => (
-    {/*<main className='main'>*/}
-        {/*<Sidebar />*/}
-
-        {/*<Content />*/}
-    {/*</main>*/}
-// );
 
 export default Main;
