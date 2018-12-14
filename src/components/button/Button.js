@@ -4,7 +4,9 @@ class Button extends Component {
     state = {clName: ''}
 
     clickHandler = () => {
-        this.setState(({clName}) => {clName: clName ? '' : 'active'});
+        this.setState(({clName}) => {
+            return {clName: clName ? '' : 'active'}
+        });
     }
 
     render() {
