@@ -1,11 +1,45 @@
 @import '../variables';
 
-.main{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-items: stretch;
-  align-content: flex-start;
-  min-height: 60vh;
+.main {
+  .main-header {
+    min-height: 10vh;
+  }
+
+  .main-inside {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    min-height: 50vh;
+
+    .left-row {
+      width: 30%;
+      background-color: azure;
+    }
+
+    .right-row {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      align-items: stretch;
+      align-content: flex-start;
+      width: 70%;
+      background-color: antiquewhite;
+
+      .users {
+        width: 30%;
+
+        li {
+          cursor: pointer;
+        }
+      }
+
+      .posts {
+        width: 70%;
+      }
+    }
+  }
 }
