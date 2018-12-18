@@ -5,6 +5,7 @@ import Counter from '../counter';
 import Numbers from '../numbers';
 import Button from '../button';
 import Show from '../show';
+import Date from '../clock';
 
 import './content.scss';
 
@@ -18,10 +19,10 @@ const Content = () => (
             name="Se Mi"
         />
         <br/>
-
+        <Date />
         <Counter/>
         <br/>
-        <Numbers from=1 to=7 even/>
+        <Numbers from={1} to={7} even/>
 
         <Error
             text="There is an error"
