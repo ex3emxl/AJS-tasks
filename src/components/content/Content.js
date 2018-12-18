@@ -21,7 +21,7 @@ const Content = () => (
 
         <Counter/>
         <br/>
-        <Numbers from="1" to="7" even/>
+        <Numbers from=1 to=7 even/>
 
         <Error
             text="There is an error"
@@ -30,7 +30,7 @@ const Content = () => (
         <br/>
         <Button/>
         <br/>
-        <Show/>
+        <Show />
     </div>
 );
 
