@@ -24,10 +24,12 @@ class Clock extends Component {
 
     render() {
         const { date } = this.state;
-        return (<div className='date'>
-            <p>{date.toLocaleDateString()}</p>
-            <p>{date.toLocaleTimeString()}</p>
-        </div>);
+        return (
+            <div className='date'>
+            <p> { date.toLocaleDateString() } </p>
+            <p> { date.toLocaleTimeString() } </p>
+        </div>
+        );
     }
 }
 

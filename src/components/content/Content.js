@@ -20,20 +20,20 @@ const Content = () => (
             name="Se Mi"
         />
         <br/>
-        <Date/>
-        <Counter/>
+        <Date />
+        <Counter />
         <br/>
-        <Numbers from={1} to={7} even/>
+        <Numbers from={1} to={7} even />
 
         <Error
             text="There is an error"
             color="red"
         />
         <br/>
-        <Button/>
+        <Button />
         <br/>
-        <Show/>
-        <Scintillation/>
+        <Show />
+        <Scintillation />
     </div>
 );
 
