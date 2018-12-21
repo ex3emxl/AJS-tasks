@@ -7,13 +7,12 @@ class Form extends Component {
     }
 
     state = {
-        hidden: false,
-        value: ''
+        hidden: false
     };
 
     handleInputBlur = (e) => {
         this.setState({
-            hidden: true,
+            hidden: e.target.value
         });
         this.props.onloose(e.target.value);
     };
@@ -27,7 +26,7 @@ class Form extends Component {
         const { hidden } = this.state;
         const html = !hidden ?
             <input onBlur= { this.handleInputBlur } type="text"/> :
-            <span onClick= { this.handleSpanBlur }> span </span>;
+            <span onClick= { this.handleSpanBlur }> { this.state.hidden } </span>;
 
         return (
             <div className="input-form">
