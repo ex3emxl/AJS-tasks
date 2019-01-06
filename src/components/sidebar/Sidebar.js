@@ -5,6 +5,7 @@ import './sidebar.scss';
 import Users from "../users/Users";
 import Form from "../form/Form";
 import Dashboard from "../dashboard/Dashboard";
+import Product from "../product/Product";
 
 class Sidebar extends Component {
 
@@ -49,6 +50,8 @@ class Sidebar extends Component {
                            categoryCount={ this.state ? this.state.categories : '' }
                            categoryCountPublished={ this.state ? this.state.publishedCategories : '' }
                            productsCount={ this.state ? this.state.products : '' }/>
+                <br />
+                <Product />
             </div>
         );
     }
