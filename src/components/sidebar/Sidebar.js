@@ -5,6 +5,7 @@ import './sidebar.scss';
 import Users from "../users/Users";
 import Form from "../form/Form";
 import Dashboard from "../dashboard/Dashboard";
+import Product from "../product/Product";
 
 const users = [
     { firstName: 'Se', lastName: 'Mi', age: 37 },
@@ -31,6 +32,9 @@ const Sidebar = () => (
             categoryCount ={ countCat }
             categoryCountPublished ={ countCatPub }
             productsCount = { countProd }/>
+        <br />
+        <Product />
+
     </div>
 );
 
