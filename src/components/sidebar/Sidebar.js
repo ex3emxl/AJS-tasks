@@ -6,32 +6,53 @@ import Users from "../users/Users";
 import Form from "../form/Form";
 import Dashboard from "../dashboard/Dashboard";
 
-const users = [
-    { firstName: 'Se', lastName: 'Mi', age: 37 },
-    { firstName: 'John', lastName: 'Dou', age: 39 },
-    { firstName: 'Un', lastName: 'Known', age: 99 },
-];
+class Sidebar extends Component {
 
-const fn = text => console.log(text);
-const name = 'John';
-const countCat = 10;
-const countCatPub = 3;
-const countProd = 50;
+    state = null;
 
+    componentDidMount() {
+        fetch('http://localhost:8086/public/login', {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'Content-type': 'application/json; charset=utf-8'
+            },
+            body: JSON.stringify({ email: 'admin@a.com', password: 'admin' })
+        })
+        fetch('http://localhost:8086/shop_info', {
+            method: 'GET',
+            credentials: 'include',
+        })
+            .then(response => response.json())
+            .then(data => this.setState(data))
+    }
 
-const Sidebar = () => (
-    <div className='sidebar'>
-        <h2>Sidebar</h2>
+    users = [
+        { firstName: 'Se', lastName: 'Mi', age: 37 },
+        { firstName: 'John', lastName: 'Dou', age: 39 },
+        { firstName: 'Un', lastName: 'Known', age: 99 },
+    ];
 
-        <Users users = { users } />
+    fn = text => console.log(text);
 
-        <Form onloose = { fn }/>
-        <br />
-        <Dashboard name = { name }
-            categoryCount ={ countCat }
-            categoryCountPublished ={ countCatPub }
-            productsCount = { countProd }/>
-    </div>
-);
+    render() {
+
+        return (
+            <div className='sidebar'>
+                <h2>Sidebar</h2>
+
+                <Users users={ this.users }/>
+
+                <Form onloose={ this.fn }/>
+                <br/>
+                <Dashboard name={ name }
+                           categoryCount={ this.state ? this.state.categories : '' }
+                           categoryCountPublished={ this.state ? this.state.publishedCategories : '' }
+                           productsCount={ this.state ? this.state.products : '' }/>
+            </div>
+        );
+    }
+}
+
 
 export default Sidebar;
