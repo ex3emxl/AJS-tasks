@@ -8,7 +8,7 @@ import Dashboard from "../dashboard/Dashboard";
 
 class Sidebar extends Component {
 
-    state = null;
+    state = {};
 
     componentDidMount() {
         fetch('http://localhost:8086/public/login', {
