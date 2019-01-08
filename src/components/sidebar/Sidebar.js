@@ -6,6 +6,7 @@ import Users from "../users/Users";
 import Form from "../form/Form";
 import Dashboard from "../dashboard/Dashboard";
 import Product from "../product/Product";
+import { getInfo } from "../../services";
 
 class Sidebar extends Component {
 
@@ -20,12 +21,8 @@ class Sidebar extends Component {
             },
             body: JSON.stringify({ email: 'admin@a.com', password: 'admin' })
         })
-        fetch('http://localhost:8086/shop_info', {
-            method: 'GET',
-            credentials: 'include',
-        })
-            .then(response => response.json())
-            .then(data => this.setState(data))
+        getInfo()
+            .then(info => this.setState(info))
     }
 
     users = [
@@ -50,8 +47,8 @@ class Sidebar extends Component {
                            categoryCount={ this.state ? this.state.categories : '' }
                            categoryCountPublished={ this.state ? this.state.publishedCategories : '' }
                            productsCount={ this.state ? this.state.products : '' }/>
-                <br />
-                <Product />
+                <br/>
+                <Product/>
             </div>
         );
     }
