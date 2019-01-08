@@ -6,21 +6,14 @@ import Users from "../users/Users";
 import Form from "../form/Form";
 import Dashboard from "../dashboard/Dashboard";
 import Product from "../product/Product";
-import { getInfo } from "../../services";
+import { getInfo, login } from "../../services";
 
 class Sidebar extends Component {
 
     state = {};
 
     componentDidMount() {
-        fetch('http://localhost:8086/public/login', {
-            method: 'POST',
-            credentials: 'include',
-            headers: {
-                'Content-type': 'application/json; charset=utf-8'
-            },
-            body: JSON.stringify({ email: 'admin@a.com', password: 'admin' })
-        })
+        login({ email: 'admin@a.com', password: 'admin' });
         getInfo()
             .then(info => this.setState(info))
     }
