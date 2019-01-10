@@ -3,7 +3,7 @@ import React from 'react';
 import './sidebar.scss';
 
 import Users from "../users/Users";
-import Form from "../form/Form";
+import InputSpan from "../form/InputSpan";
 import Dashboard from "../dashboard/Dashboard";
 import Product from "../product/Product";
 import { getInfo, login } from "../../services";
@@ -34,12 +34,12 @@ class Sidebar extends Component {
 
                 <Users users={ this.users }/>
 
-                <Form onloose={ this.fn }/>
+                <InputSpan onloose={ this.fn }/>
                 <br/>
                 <Dashboard name={ name }
-                           categoryCount={ this.state ? this.state.categories : '' }
-                           categoryCountPublished={ this.state ? this.state.publishedCategories : '' }
-                           productsCount={ this.state ? this.state.products : '' }/>
+                           categoryCount={ this.state.categories }
+                           categoryCountPublished={ this.state.publishedCategories }
+                           productsCount={ this.state.products }/>
                 <br/>
                 <Product/>
             </div>

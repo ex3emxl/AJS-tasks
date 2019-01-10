@@ -2,6 +2,10 @@
   padding: 10px;
   margin: 10px;
   border: 1px solid darkgrey;
+  .input-text{
+    display: inline-block;
+    //margin-bottom: 10px;
+  }
   h3{
     text-align: center;
     margin: 0;
@@ -22,6 +26,7 @@
   }
   p{
     margin: 0;
+    display: inline-block;
   }
   input[name="price"]{
     width: 40px;
