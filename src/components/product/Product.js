@@ -70,37 +70,7 @@ class Product extends Component {
 
         const { title, price, description } = this.state;
 
-        const htmlTitle = !title.display ?
 
-            <h3>TITLE: <input name="title"
-                              onChange={ this.handleInputChange }
-                              onBlur={ this.validate }
-                              type="text"
-                              value={ title.value }/>
-                <p>{ title.error && <mark>{ title.error }</mark> }</p>
-            </h3> :
-
-            <h3>TITLE: <span id="title"
-                             onClick={ this.handleSpanBlur }> { this.state.title.value } </span>
-            </h3>;
-
-        const htmlPrice = !price.display ?
-
-            <>
-                <b>$<input name="price"
-                           onChange={ this.handleInputChange }
-                           onBlur={ this.validate }
-                           type="text"
-                           value={ price.value }/>
-                </b>
-                <p>{ price.error && <mark>{ price.error }</mark> }</p>
-            </> :
-
-            <b>$
-                <span id="price" onClick={ this.handleSpanBlur }>
-                    { price.value }
-                    </span>
-            </b>;
 
         const htmlDescription = !description.display ?
 
