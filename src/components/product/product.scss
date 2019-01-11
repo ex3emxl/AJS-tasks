@@ -1,0 +1,39 @@
+.product{
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid darkgrey;
+  .input-text{
+    display: inline-block;
+    //margin-bottom: 10px;
+  }
+  h3{
+    text-align: center;
+    margin: 0;
+  }
+  textarea{
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  div{
+    margin-bottom: 10px;
+  }
+  mark{
+    background: none;
+    color: red;
+    font-size: 14px;
+  }
+  p{
+    margin: 0;
+    display: inline-block;
+  }
+  input[name="price"]{
+    width: 40px;
+  }
+  input[type="submit"] {
+    border-radius: 3px;
+    text-transform: uppercase;
+    padding: 5px 10px;
+  }
+}

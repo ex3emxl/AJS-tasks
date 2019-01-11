@@ -3,28 +3,19 @@ import React from 'react';
 import './sidebar.scss';
 
 import Users from "../users/Users";
-import Form from "../form/Form";
+import InputSpan from "../form/InputSpan";
 import Dashboard from "../dashboard/Dashboard";
+import Product from "../product/Product";
+import { getInfo, login } from "../../services";
 
 class Sidebar extends Component {
 
     state = {};
 
     componentDidMount() {
-        fetch('http://localhost:8086/public/login', {
-            method: 'POST',
-            credentials: 'include',
-            headers: {
-                'Content-type': 'application/json; charset=utf-8'
-            },
-            body: JSON.stringify({ email: 'admin@a.com', password: 'admin' })
-        })
-        fetch('http://localhost:8086/shop_info', {
-            method: 'GET',
-            credentials: 'include',
-        })
-            .then(response => response.json())
-            .then(data => this.setState(data))
+        login({ email: 'admin@a.com', password: 'admin' });
+        getInfo()
+            .then(info => this.setState(info))
     }
 
     users = [
@@ -43,12 +34,14 @@ class Sidebar extends Component {
 
                 <Users users={ this.users }/>
 
-                <Form onloose={ this.fn }/>
+                <InputSpan onloose={ this.fn }/>
                 <br/>
                 <Dashboard name={ name }
-                           categoryCount={ this.state ? this.state.categories : '' }
-                           categoryCountPublished={ this.state ? this.state.publishedCategories : '' }
-                           productsCount={ this.state ? this.state.products : '' }/>
+                           categoryCount={ this.state.categories }
+                           categoryCountPublished={ this.state.publishedCategories }
+                           productsCount={ this.state.products }/>
+                <br/>
+                <Product/>
             </div>
         );
     }
