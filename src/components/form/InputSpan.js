@@ -2,10 +2,6 @@ import React from 'react';
 
 class InputSpan extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     state = {
         hidden: false
     };
@@ -33,7 +29,7 @@ class InputSpan extends Component {
                        value={ this.props.value }
                        type="text"
                 />
-                <p>{ this.props.error && <mark>{ this.props.error }</mark> }</p>
+                { this.props.error && <p><mark>{ this.props.error }</mark></p> }
             </> :
             <span id={ this.props.name } onClick={ this.handleSpanBlur }> { this.state.hidden } </span>;
 
