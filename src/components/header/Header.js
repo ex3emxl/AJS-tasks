@@ -6,7 +6,7 @@ import './header.scss';
 
 const Header = () => (
     <header className='header'>
-        <Navigation list={['Home', 'Products', 'Contacts']} />
+        <Navigation list={['Products', 'Products', 'Contacts']} />
     </header>
 );
 

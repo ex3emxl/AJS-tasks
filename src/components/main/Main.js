@@ -41,13 +41,13 @@ class Main extends Component {
                 </div>
                 <div className="right-row">
                     <Content/>
-                    <div className="users">
-                        <List items={users} handleClick={this.showUserInfo}/>
-                    </div>
-                    <div className="posts">
-                        <h2>Posts</h2>
-                        <List items={posts}/>
-                    </div>
+                    {/*<div className="users">*/}
+                        {/*<List items={users} handleClick={this.showUserInfo}/>*/}
+                    {/*</div>*/}
+                    {/*<div className="posts">*/}
+                        {/*<h2>Posts</h2>*/}
+                        {/*<List items={posts}/>*/}
+                    {/*</div>*/}
                 </div>
             </div>
         </main>);
