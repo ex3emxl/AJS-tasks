@@ -7,11 +7,11 @@ import { FaTrashAlt, FaBatteryThreeQuarters, FaCheck } from 'react-icons/fa';
 class Products extends Component {
 
     state = {
-        tasks: null
+        products: null,
+        displayFilter: []
     };
 
-    days = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
-    today = new Date().getDay();
+    noResults = 'No Results';
 
     componentDidMount() {
         login({ email: 'admin@a.com', password: 'admin' });
@@ -47,32 +47,42 @@ class Products extends Component {
         e.preventDefault();
     }
 
+    handleInputChange = (e) => {
+        // console.log(this.state.products);
+        if (e.target.value.length > 2) {
+            let displayFilter = this.state.products.filter(product => product.title.includes(e.target.value));
+            displayFilter = displayFilter.length ? displayFilter : this.noResults;
+            console.log(displayFilter);
+            this.setState({ displayFilter: displayFilter })
+
+        } else {
+            this.setState({ displayFilter: [] })
+        }
+        return true
+    }
+
     render() {
 
-        const { products } = this.state;
-        // console.log(products);
+        let { products, displayFilter } = this.state;
+        const productItems = displayFilter.length ? displayFilter : products;
 
         return (
-            <div>
-                    {
-                        products && (
-                            products.map((productList, index) => (
-                                <ol className='productlist'>
-                                    {
-                                        console.log(productList)
-                                        // productList.map(el => (
-                                        //     <li className="product" key={ el.id }>
-                                        //         { el.title }
-                                        //     </li>
-                                        // ))
-                                    }
-                                </ol>
-                                // <span>Добавить новый</span>
-                            ))
+                <div className='productlist'>
+                    <label>Filter</label>
+                    <input onChange={ this.handleInputChange } type="text"/>
+                    { displayFilter === this.noResults ?
+                        <div className='productlist'>{ this.noResults }</div> :
+                        productItems && (
+                            Object.values(productItems).map((productList) => (
+                                    <div className="product" key={ productList.id }>
+                                        { productList.title }
+                                    </div>
+                                )
+                            )
                         )
-
                     }
-            </div>
+                    <span>Добавить новый</span>
+                </div>
         );
     }
 }
