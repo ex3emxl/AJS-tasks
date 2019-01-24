@@ -1,10 +1,11 @@
-import './products.scss';
+import React from 'react';
+import { FaTrashAlt, FaBatteryThreeQuarters, FaCheck, FaEdit, FaShoppingBag } from 'react-icons/fa';
 
 import { getProductsByCategory } from '../../services';
-
-import { FaTrashAlt, FaBatteryThreeQuarters, FaCheck } from 'react-icons/fa';
 import InputSpan from '../../components/form';
-import React from 'react';
+import * as Constants from '../../constants';
+
+import './products.scss';
 
 class Products extends Component {
 
@@ -20,14 +21,10 @@ class Products extends Component {
             .map((inputSpan) => inputSpan = React.createRef())
     };
 
-    noResults = 'No Results';
-
     componentDidMount() {
         getProductsByCategory()
             .then(products => {
                 this.setState({ products: products.products });
-                // console.log(Object.keys(products.products).length);
-                this.setRef(Object.keys(products.products).length)
             })
     }
 
@@ -42,7 +39,7 @@ class Products extends Component {
     handleInputChange = (e) => {
         if (e.target.value.length > 2) {
             let displayFilter = this.state.products.filter(product => product.title.includes(e.target.value));
-            displayFilter = displayFilter.length ? displayFilter : this.noResults;
+            displayFilter = displayFilter.length ? displayFilter : Constants.NO_RESULTS;
             this.setState({ displayFilter: displayFilter })
 
         } else {
@@ -66,23 +63,24 @@ class Products extends Component {
 
         const { products, displayFilter } = this.state;
         const productItems = displayFilter.length ? displayFilter : products;
+        products && this.setRef(products.length);
 
         return (
             <div className='component-products'>
-                <label>Filter</label>
+                <label>{ Constants.FILTER }</label>
                 <input onChange={ this.handleInputChange } type="text"/>
-                <span>Need type more than 3 symbols</span>
+                <span>{ Constants.MORE_SYMBOLS }</span>
                 <div className="products-wrapper">
-                    { displayFilter === this.noResults ?
-                        <div className='product-list'>{ this.noResults }</div> :
+                    { displayFilter === Constants.NO_RESULTS ?
+                        <div className='product-list'>{ Constants.NO_RESULTS }</div> :
                         productItems && (
                             Object.values(productItems).map((productList, index) => (
                                     <div className="product-wrapper" key={ productList.id }>
                                         <div className="product">
                                             <a className="delete" onClick={ this.deleteTask }><FaTrashAlt/></a>
                                             <a className="edit"
-                                               onClick={ () => this.simulateClick(index) }><FaBatteryThreeQuarters/></a>
-                                            <div className="product-icon"><FaCheck/></div>
+                                               onClick={ () => this.simulateClick(index) }><FaEdit/></a>
+                                            <div className="product-icon"><FaShoppingBag/></div>
                                         </div>
                                         <InputSpan ref={ this.insideRefs[index] }
                                                    onloose={ (arg = true) => arg }

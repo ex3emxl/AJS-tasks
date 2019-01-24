@@ -6,14 +6,13 @@ import Users from "../users/Users";
 import InputSpan from "../form/InputSpan";
 import Dashboard from "../dashboard/Dashboard";
 import Product from "../product/Product";
-import { getInfo, login } from "../../services";
+import { getInfo } from "../../services";
 
 class Sidebar extends Component {
 
     state = {};
 
     componentDidMount() {
-        // login({ email: 'admin@a.com', password: 'admin' });
         getInfo()
             .then(info => this.setState(info))
     }
@@ -31,10 +30,6 @@ class Sidebar extends Component {
         return (
             <div className='sidebar'>
                 <h2>Sidebar</h2>
-
-                <Users users={ this.users }/>
-
-                <InputSpan onloose={ this.fn }/>
                 <br/>
                 <Dashboard name={ name }
                            categoryCount={ this.state.categories }

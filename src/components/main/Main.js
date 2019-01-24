@@ -1,12 +1,10 @@
 import React from 'react';
+
 import Sidebar from '../sidebar';
 import Content from '../content';
 import { checkUser, getInfo } from "../../services";
-// import List from '../list';
 
 import './main.scss';
-
-// import { checkUser } from "../../../../bufer21/src/services";
 
 class Main extends Component {
     state = {
@@ -20,7 +18,6 @@ class Main extends Component {
     }
 
     componentDidMount() {
-        console.log('componentDidMount');
         checkUser()
             .then(data => this.setState({ user: data, loading: false }))
             .catch(() => this.setState({ loading: false }))
@@ -29,21 +26,18 @@ class Main extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         if (!prevState.user && this.state.user) {
-            console.log('componentDidUpdate');
             getInfo()
                 .then((info) => this.setState({ info }));
         }
     }
 
     onLogin = (user) => {
-        console.log('onLogin');
         this.setState({
             user
         });
     };
 
     render() {
-        console.log('render');
         const { title } = this.props;
         const { user, info, loading } = this.state;
 
@@ -65,6 +59,5 @@ class Main extends Component {
         </main>);
     }
 }
-
 
 export default Main;
