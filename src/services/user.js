@@ -2,4 +2,6 @@ import { rest } from './rest';
 
 const login = (data) => rest.post('public/login', data);
 
-export { login };
+const checkUser = () => rest.get('public/checkUser');
+
+export { login, checkUser };

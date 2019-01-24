@@ -13,7 +13,7 @@ class Sidebar extends Component {
     state = {};
 
     componentDidMount() {
-        login({ email: 'admin@a.com', password: 'admin' });
+        // login({ email: 'admin@a.com', password: 'admin' });
         getInfo()
             .then(info => this.setState(info))
     }
