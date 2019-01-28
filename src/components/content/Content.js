@@ -6,11 +6,6 @@ import Products from '../../pages/products';
 import Login from '../../pages/login';
 
 import './content.scss';
-import Home from "../../../../bufer21/src/components/main/Main";
-
-
-const Error = (props) =>
-    <mark style={ { color: props.color } }>{ props.text }</mark>;
 
 const Content = (props) => {
         const { user, onLogin } = props;

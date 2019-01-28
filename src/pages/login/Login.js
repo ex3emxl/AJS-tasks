@@ -1,9 +1,9 @@
 import { login } from '../../services';
 
 const Login = ({ onLogin }) => {
-    const onSubmit = (ev) => {
-        ev.preventDefault();
-        const { elements } = ev.target;
+    const onSubmit = (e) => {
+        e.preventDefault();
+        const { elements } = e.target;
         const data = {
             email: elements.email.value,
             password: elements.password.value,

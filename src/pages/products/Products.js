@@ -40,10 +40,10 @@ class Products extends Component {
         if (e.target.value.length > 2) {
             let displayFilter = this.state.products.filter(product => product.title.includes(e.target.value));
             displayFilter = displayFilter.length ? displayFilter : Constants.NO_RESULTS;
-            this.setState({ displayFilter: displayFilter })
+            this.setState({ displayFilter });
 
         } else {
-            this.setState({ displayFilter: [] })
+            this.setState({ displayFilter: [] });
         }
         return true
     }
@@ -56,7 +56,7 @@ class Products extends Component {
                 title: product.id === id ? e.target.value : product.title
             }
         ));
-        this.setState({ products: products });
+        this.setState({ products });
     }
 
     render() {
