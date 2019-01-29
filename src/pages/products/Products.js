@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaTrashAlt, FaBatteryThreeQuarters, FaCheck, FaEdit, FaShoppingBag } from 'react-icons/fa';
 
-import { getProductsByCategory } from '../../services';
+import { getAllProducts } from '../../services';
 import InputSpan from '../../components/form';
 import * as Constants from '../../constants';
 
@@ -22,9 +22,9 @@ class Products extends Component {
     };
 
     componentDidMount() {
-        getProductsByCategory()
+        getAllProducts()
             .then(products => {
-                this.setState({ products: products.products });
+                this.setState({ products });
             })
     }
 
@@ -48,14 +48,12 @@ class Products extends Component {
         return true
     }
 
-    handleInputSpanChange = (id, e) => {
+    handleInputSpanChange = (id, index, e) => {
         let { products } = this.state;
-        products = this.state.products.map(product => (
-            {
-                id: product.id,
-                title: product.id === id ? e.target.value : product.title
-            }
-        ));
+        products[index] = {
+            id: id,
+            title: e.target.value
+        }
         this.setState({ products });
     }
 
@@ -72,7 +70,9 @@ class Products extends Component {
                 <span>{ Constants.MORE_SYMBOLS }</span>
                 <div className="products-wrapper">
                     { displayFilter === Constants.NO_RESULTS ?
-                        <div className='product-list'>{ Constants.NO_RESULTS }</div> :
+                        <div className='product-list'>
+                            { Constants.NO_RESULTS }
+                        </div> :
                         productItems && (
                             Object.values(productItems).map((productList, index) => (
                                     <div className="product-wrapper" key={ productList.id }>
@@ -84,7 +84,7 @@ class Products extends Component {
                                         </div>
                                         <InputSpan ref={ this.insideRefs[index] }
                                                    onloose={ (arg = true) => arg }
-                                                   onchange={ (e) => this.handleInputSpanChange(productList.id, e) }
+                                                   onchange={ (e) => this.handleInputSpanChange(productList.id, index, e) }
                                                    value={ productList.title.toLowerCase() }
                                         />
                                     </div>
@@ -93,7 +93,7 @@ class Products extends Component {
                         )
                     }
                 </div>
-                <span>Добавить новый</span>
+                <span className="add-button">Добавить новый</span>
             </div>
         );
     }

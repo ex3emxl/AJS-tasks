@@ -1,7 +1,7 @@
 import { rest } from './rest';
 
 const getInfo = () => rest.get('shop_info');
-const getProductsByCategory = () => rest.get('public/categories/1');
+const getAllProducts = () => rest.get('public/products');
 
 
-export { getInfo, getProductsByCategory };
+export { getInfo, getAllProducts };
