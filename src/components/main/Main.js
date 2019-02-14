@@ -1,58 +1,63 @@
 import React from 'react';
+
 import Sidebar from '../sidebar';
 import Content from '../content';
-import List from '../list';
+import { checkUser, getInfo } from "../../services";
 
 import './main.scss';
 
 class Main extends Component {
     state = {
-        users: [],
-        posts: []
-    };
+        user: null,
+        info: null,
+        loading: true
+    }
 
     constructor(props) {
         super(props);
     }
 
     componentDidMount() {
-        fetch('https://jsonplaceholder.typicode.com/users')
-            .then(response => response.json())
-            .then(users => this.setState({users}))
+        checkUser()
+            .then(data => this.setState({ user: data, loading: false }))
+            .catch(() => this.setState({ loading: false }))
+
     }
 
-    showUserInfo = user => {
-        fetch(`https://jsonplaceholder.typicode.com/posts?userId=${user.id}`)
-            .then(response => response.json())
-            .then(posts => {
-                return this.setState({posts})
-            })
+    componentDidUpdate(prevProps, prevState) {
+        if (!prevState.user && this.state.user) {
+            getInfo()
+                .then((info) => this.setState({ info }));
+        }
     }
+
+    onLogin = (user) => {
+        this.setState({
+            user
+        });
+    };
 
     render() {
-        const {title} = this.props;
-        const {users, posts} = this.state;
+        const { title } = this.props;
+        const { user, info, loading } = this.state;
 
         return (<main className='main'>
-            <h1 className="main-header">{title}</h1>
+            <h1 className="main-header">{ title }</h1>
             <div className="main-inside">
                 <div className="left-row">
                     <Sidebar/>
                 </div>
                 <div className="right-row">
-                    <Content/>
-                    <div className="users">
-                        <List items={users} handleClick={this.showUserInfo}/>
-                    </div>
-                    <div className="posts">
-                        <h2>Posts</h2>
-                        <List items={posts}/>
-                    </div>
+                    <Content
+                        user={ user }
+                        info={ info }
+                        loading={ loading }
+                        onLogin={ this.onLogin }
+                    />
                 </div>
             </div>
         </main>);
     }
 }
-
 
 export default Main;

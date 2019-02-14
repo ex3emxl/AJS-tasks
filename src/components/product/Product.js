@@ -1,6 +1,6 @@
 import React from 'react';
 
-import InputSpan from "../form/InputSpan";
+import InputSpan from '../form/InputSpan';
 
 import './product.scss';
 

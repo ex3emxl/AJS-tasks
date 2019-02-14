@@ -9,12 +9,10 @@ import './components/general.scss';
 
 const Wrapper = (
     <>
-        <Header />
-        <Main title="Title" />
-        <Footer />
+        <Header/>
+        <Main title="Title"/>
+        <Footer/>
     </>
 );
 
-
-
-    ReactDom.render(Wrapper, document.getElementById('app'));
+ReactDom.render(Wrapper, document.getElementById('app'));

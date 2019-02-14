@@ -1,0 +1,64 @@
+.component-products {
+  .add-button {
+    width: 100%;
+    display: block;
+  }
+  .products-wrapper {
+    width: 100%;
+    .product-wrapper {
+      float: left;
+      width: 120px;
+      height: 120px;
+      padding: 25px;
+      text-align: center;
+
+      .product {
+        padding: 0;
+        width: 75px;
+        height: 75px;
+        margin: 0 auto 10px;
+        position: relative;
+
+        a {
+          cursor: pointer;
+          float: right;
+        }
+
+        .product-icon {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          color: darkblue;
+
+          svg {
+            width: 30px;
+            height: 30px;
+          }
+        }
+
+        .delete {
+          color: firebrick;
+        }
+
+        .edit {
+          color: darkgoldenrod;
+        }
+      }
+
+      .product-title {
+        text-transform: capitalize;
+      }
+    }
+  }
+
+  .completed {
+    text-decoration: lightslategrey line-through;
+    color: lightslategrey;
+  }
+
+  .complete {
+    color: darkblue;
+  }
+}
+

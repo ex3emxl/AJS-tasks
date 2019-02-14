@@ -3,7 +3,7 @@ import React from 'react';
 class InputSpan extends Component {
 
     state = {
-        hidden: false
+        hidden: this.props.value ? this.props.value : false
     };
 
     handleInputBlur = (e) => {
@@ -28,6 +28,7 @@ class InputSpan extends Component {
                        name={ this.props.name }
                        value={ this.props.value }
                        type="text"
+                       autoFocus
                 />
                 { this.props.error && <p><mark>{ this.props.error }</mark></p> }
             </> :

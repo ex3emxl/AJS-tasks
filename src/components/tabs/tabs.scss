@@ -1,0 +1,35 @@
+.tabs {
+  .nav-tab {
+    ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      background: #659cff;
+      border-radius: 3px;
+      overflow: hidden;
+
+      li {
+        &.active a {
+          background: #aaa;
+        }
+
+      }
+
+      a {
+        display: block;
+        padding: 7px 10px;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .tab-content {
+    opacity: 1;
+    transition: opacity .5s;
+
+    .active {
+      opacity: 1;
+    }
+  }
+}
